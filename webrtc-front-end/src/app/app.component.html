@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="status-message" *ngIf="statusMessage$ | async as message">
+    <p [class]="message.type">{{ message.text }}</p>
+  </div>
+
+  <div class="video-container" *ngIf="showVideo$ | async as showVideo">
+    <app-video-capture></app-video-capture>
+  </div>
+
+  <div class="hex-display" *ngIf="showHexData$ | async">
+    <h3>Hex Data</h3>
+    <p>{{ (hexData$ | async) || 'Waiting for data...' | slice:0:100 }}...</p>
+  </div>
+</div>
